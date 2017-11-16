@@ -11,25 +11,33 @@ class BlogsController < Sinatra::Base
   $photos = [{
 	 id: 0,
 	 title: "Photo 1",
-	 body: "This is the first post"
+	 body: "This is the first post",
+   img: "http://fillmurray.com/300/300"
 },
 {
     id: 1,
     title: "Photo 2",
-    body: "This is the second post"
+    body: "This is the second post",
+    img: "http://fillmurray.com/300/300"
 },
 {
     id: 2,
     title: "Photo 3",
-    body: "This is the third post"
+    body: "This is the third post",
+    img: "http://fillmurray.com/300/300"
 }];
+
+
 
   get "/" do
     @title = "Photos homepage"
-    erb :'photos/index'
+    erb :'photos/home'
   end
 
+
+
   get "/photos" do
+
     @title = 'photos'
     @photos = $photos
     erb :'photos/index'
@@ -47,7 +55,10 @@ class BlogsController < Sinatra::Base
   end
 
   get "/photos/:id/edit" do
-    "Edit: #{params[:id]}"
+    @title = 'Edit Page'
+    id = params[:id].to_i
+    @photo = $photos[id]
+    erb :'photos/edit'
   end
 
 end

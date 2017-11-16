@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title> <%= @title %> </title>
-  </head>
-  <body>
-    <nav>
-      <a href="/photos">Photos</a>
-      <a href="/photos/new">New Photos</a>
-    </nav>
+
+    
     <h1>Welcome to my photos page</h1>
 
     <% @photos.each do |photo| %>
+
       <div>
         <h3><a href="/photos/<%=  photo[:id]%>"> <%= photo[:title] %></a></h3>
+        <img src="<%= photo[:img] %>" alt="">
       </div>
 
     <% end %>
-  </body>
-</html>
